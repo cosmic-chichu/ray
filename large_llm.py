@@ -114,7 +114,8 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     engine_args.worker_use_ray = True
     engine_args.dtype = "half"
     engine_args.max_model_len=2000
-    engine_args.gpu_memory_utilization=0.98
+    engine_args.gpu_memory_utilization=0.94
+    engine_args.cpu_offload_gb=5
 
     return VLLMDeployment.bind(
         engine_args,
