@@ -112,7 +112,6 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     parsed_args = parse_vllm_args(cli_args)
     engine_args = AsyncEngineArgs.from_cli_args(parsed_args)
     engine_args.worker_use_ray = True
-    engine_args.quantization="modelopt"
 
     return VLLMDeployment.bind(
         engine_args,
