@@ -133,5 +133,6 @@ model = build_app(
     {"model": os.environ['MODEL_ID'], 
      "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'],
      "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'],
+     "tool-call-parser": "llama3_json",
      "chat-template": "/opt/one-flow/serve-llama/templates/tool_chat_template_llama3.1_json.jinja",
     })
