@@ -30,17 +30,21 @@ app = FastAPI()
 @serve.ingress(app)
 class VLLMDeployment:
     def __init__(
-            self,
-            engine_args: AsyncEngineArgs,
-            response_role: str,
-            lora_modules: Optional[List[LoRAModulePath]] = None,
-            chat_template: Optional[str] = None,
+        self,
+        engine_args: AsyncEngineArgs,
+        response_role: str,
+        lora_modules: Optional[List[LoRAModulePath]] = None,
+        prompt_adapters: Optional[List[PromptAdapterPath]] = None,
+        request_logger: Optional[RequestLogger] = None,
+        chat_template: Optional[str] = None,
     ):
         logger.info(f"Starting with engine args: {engine_args}")
         self.openai_serving_chat = None
         self.engine_args = engine_args
         self.response_role = response_role
         self.lora_modules = lora_modules
+        self.prompt_adapters = prompt_adapters
+        self.request_logger = request_logger
         self.chat_template = chat_template
         self.engine = AsyncLLMEngine.from_engine_args(engine_args)
 
