@@ -112,10 +112,6 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     parsed_args = parse_vllm_args(cli_args)
     engine_args = AsyncEngineArgs.from_cli_args(parsed_args)
     engine_args.worker_use_ray = True
-    engine_args.dtype = "half"
-    engine_args.max_model_len=2000
-    engine_args.gpu_memory_utilization=0.90
-    engine_args.cpu_offload_gb=10
     engine_args.quantization="modelopt"
 
     return VLLMDeployment.bind(
