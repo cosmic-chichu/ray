@@ -39,7 +39,7 @@ class EmbedderDeployment:
         self.request_logger = request_logger
         self.engine = AsyncLLMEngine.from_engine_args(engine_args)
 
-    @app.post("v1/embeddings")
+    @app.post("/v1/embeddings")
     async def embed(
             self, request: EmbeddingRequest, raw_request: Request
     ):
