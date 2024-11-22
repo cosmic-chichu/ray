@@ -71,11 +71,8 @@ class EmbedderDeployment:
             return JSONResponse(
                 content=generator.model_dump(), status_code=generator.code
             )
-        if request.stream:
-            return StreamingResponse(content=generator, media_type="text/event-stream")
-        else:
-            assert isinstance(generator, EmbeddingResponse)
-            return JSONResponse(content=generator.model_dump())
+        assert isinstance(generator, EmbeddingResponse)
+        return JSONResponse(content=generator.model_dump())
 
 
 def parse_vllm_args(cli_args: Dict[str, str]):
