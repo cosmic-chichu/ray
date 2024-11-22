@@ -61,6 +61,8 @@ class EmbedderDeployment:
                 model_config,
                 BASE_MODEL_PATHS,
                 request_logger=self.request_logger,
+                chat_template=None,
+                chat_template_content_format=None,
             )
         logger.info(f"Request: {request}")
         generator = await self.openai_serving_embedding.create_embedding(
