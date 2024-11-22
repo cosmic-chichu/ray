@@ -109,9 +109,6 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
 
     return EmbedderDeployment.bind(
         engine_args,
-        parsed_args.response_role,
-        parsed_args.lora_modules,
-        parsed_args.prompt_adapters,
         cli_args.get("request_logger"),
     )
 
