@@ -25,7 +25,7 @@ logger = logging.getLogger("ray.serve")
 app = FastAPI()
 
 
-@serve.deployment("EmbeddingModel")
+@serve.deployment(name="EmbedderDeployment")
 @serve.ingress(app)
 class EmbedderDeployment:
     def __init__(
