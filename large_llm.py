@@ -114,7 +114,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     """  # noqa: E501
     parsed_args = parse_vllm_args(cli_args)
     engine_args = AsyncEngineArgs.from_cli_args(parsed_args)
-    engine_args.worker_use_ray = True
+    engine_args.distributed_executor_backend="ray"
     engine_args.device="cuda"
 
     return VLLMDeployment.bind(
@@ -130,4 +130,5 @@ model = build_app(
     {"model": os.environ['MODEL_ID'], 
      "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'],
      "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'],
+
     })
