@@ -102,7 +102,6 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     parsed_args = parse_vllm_args(cli_args)
     engine_args = AsyncEngineArgs.from_cli_args(parsed_args)
     engine_args.distributed_executor_backend="ray"
-    engine_args.device = "cuda"
     engine_args.task = "embedding"
     engine_args.trust_remote_code = True
 
