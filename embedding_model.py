@@ -104,6 +104,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     engine_args.worker_use_ray = True
     engine_args.device = "cuda"
     engine_args.task = "embedding"
+    engine_args.trust_remote_code = True
 
     return EmbedderDeployment.bind(
         engine_args,
